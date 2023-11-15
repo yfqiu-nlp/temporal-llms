@@ -5,7 +5,7 @@ Materials for paper "Are large language models temporally grounded?"
 
 ## Environment Setup
 
-Configure your conda enviroment from our provided `llama-hf_environment.yml` by,
+Configure your conda environment from our provided `llama-hf_environment.yml` by,
 
 ```
 conda env create -f llama-hf_environment.yml
