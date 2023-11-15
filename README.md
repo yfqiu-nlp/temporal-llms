@@ -1,7 +1,7 @@
 # Temporal-LLMs
 Materials for paper "Are large language models temporally grounded?"
 
-![image](temporal-qualitative-case.pdf)
+![Screentshot](illustration.png)
 
 ## Environment Setup
 
@@ -22,17 +22,25 @@ Our experiments require the inference with these following models,
 2. `text-davinci-002`,
 3. `text-davinci-003`.
 
-You will need to prepare the OpenAI API call and access these models in advance.
+You will need to prepare your own OpenAI API call and access for these models in advance.
 
-### LLaMA
+### LLaMA Chceckpoints
 
 Our experiments require the inference with these following models,
 
-1. `davinci`
-2. `text-davinci-002`
-3. `text-davinci-003`
+1. `LLaMA-7B`
+2. `LLaMA-13B`
+3. `LLaMA-33B`
+4. `LLaMA-65B`
+5. `LLaMA-2-7B`
+6. `LLaMA-2-13B`
+7. `LLaMA-2-70B`
+8. `LLaMA-2-7B-chat`
+9. `LLaMA-2-13B-chat`
+10. `LLaMA-2-70B-chat`
 
-We recommend you to download all files from huggingface hub in to a local path.
+
+We recommend you to download all files from huggingface hub in to a local path, see the LLaMA [here](https://huggingface.co/docs/transformers/main/model_doc/llama) and [here](https://huggingface.co/docs/transformers/main/model_doc/llama2#resources) for LLaMA-2.
 
 ## Usage
 
@@ -91,13 +99,13 @@ You can use the following scripts for inference with GPT,
 sh run-tempeval-gpt.sh
 ```
 
-You can use the following scripts for doing `zero/few-shot likelihood/decoding-based` evaluation, and `chain-of-thought` experiments for LLaMA models.
+You can use the following scripts for doing `zero/few-shot + likelihood/decoding-based` evaluation, and `chain-of-thought` experiments for LLaMA models.
 
 ```
 sh run-tempeval-llama.sh
 ```
 
-#### Bi-directional Evaluation for Reasoning
+#### Evaluation for Bi-directional Reasoning
 
 To run the bi-directional evaluation in checking model's reasoning consistency, simply run this code,
 ```
@@ -109,7 +117,7 @@ Taking `Llama-2-70b-chat-hf` as an example,
 python3 eval-tempeval-bi.py llama-output/tempeval-qa-bi/fs-bi-pt1-icl3-output-likelihood/ Llama-2-70b-chat-hf
 ```
 
-#### Chain-of-thought Evaluation
+#### Evaluation for Chain-of-thought Reasoning
 To evaluate the reasoning performance for LLaMA with the chain-of-thought prompting, simply run this code,
 ```
 python3 eval-tempeval-bi-cot.py $OUTPUT_PATH $MODEL_NAME
