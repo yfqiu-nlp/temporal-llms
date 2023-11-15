@@ -20,11 +20,11 @@ num_example=3
 
 for prompt in 1 2 3
 do
-    # # ### run bi-tempqa with likelihood
+    # # ### Zero-shot likelihood-based Evaluation
     python3 tempeval-llama.py \
         --model_name $model_name \
         --model_path $model_path \
-        --output_path llama-output/zs-bi-pt${prompt}-output-likelihood \
+        --output_path llama-output/tempeval-qa-bi/zs-bi-pt${prompt}-output-likelihood \
         --temperature 0 \
         --top_p 1.0 \
         --max_events_length 3800 \
@@ -32,11 +32,11 @@ do
         --bidirectional_temp_eval_likelihood \
         --prompt_template ${prompt} 
         
-    # # ### run bi-tempqa with ICL + likelihood
+    # # ### Few-shot ICL likelihood-based Evaluation
     python3 tempeval-llama.py \
         --model_name $model_name \
         --model_path $model_path \
-        --output_path llama-output/fs-bi-pt${prompt}-icl${num_example}-output-likelihood \
+        --output_path llama-output/tempeval-qa-bi/fs-bi-pt${prompt}-icl${num_example}-output-likelihood \
         --temperature 0 \
         --top_p 1.0 \
         --max_events_length 2400 \
@@ -46,11 +46,11 @@ do
         --prompt_template ${prompt} \
         --num_example ${num_example}
 
-    # # ### run bi-tempqa with decoding
+    # # ### Zero-shot decoding-based Evaluation
     python3 tempeval-llama.py \
         --model_name $model_name \
         --model_path $model_path \
-        --output_path llama-output/zs-bi-pt${prompt}-output-decoding \
+        --output_path llama-output/tempeval-qa-bi/zs-bi-pt${prompt}-output-decoding \
         --temperature 0 \
         --top_p 1.0 \
         --max_events_length 3800 \
@@ -58,11 +58,11 @@ do
         --bidirectional_temp_eval_decoding \
         --prompt_template ${prompt}
         
-    # # ### run bi-tempqa with ICL + decoding
+    # # ### Few-shot ICL likelihood-based Evaluation
     python3 tempeval-llama.py \
         --model_name $model_name \
         --model_path $model_path \
-        --output_path llama-output/fs-bi-pt${prompt}-icl${num_example}-truncation-output-decoding-del \
+        --output_path llama-output/tempeval-qa-bi/fs-bi-pt${prompt}-icl${num_example}-output-decoding \
         --temperature 0 \
         --top_p 1.0 \
         --max_events_length 2600 \
@@ -72,11 +72,11 @@ do
         --prompt_template ${prompt} \
         --num_example ${num_example}
 
-    # # ### run bi-tempqa with ICL + CoT + decoding
+    # # ### Few-shot decoding-based Evaluation with Chain-of-Thought Prompting
     python3 tempeval-llama.py \
         --model_name $model_name \
         --model_path $model_path \
-        --output_path llama-output/fs-bi-pt${prompt}-icl${num_example}-cot-truncation-output-decoding-del \
+        --output_path llama-output/tempeval-qa-bi/fs-bi-pt${prompt}-icl${num_example}-cot-output-decoding \
         --temperature 0.8 \
         --top_p 0.95 \
         --do_sample \

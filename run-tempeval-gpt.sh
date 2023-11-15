@@ -9,17 +9,17 @@ model_name="gpt-4"
 # # # ### run bi-tempqa-qa with zero-shot prompting
 python3 tempeval-gpt.py \
     --model_name $model_name \
-    --output_path "gpt-output/zs-bi-output" \
+    --output_path "gpt-output/tempeval-qa-bi/zero-shot" \
     --temperature 0 \
     --top_p 1.0 \
     --max_events_length 1900 \
     --max_new_decoding_tokens 2 \
     --bidirectional_temp_eval \
 
-# # # ### run bi-tempqa with zero-shot prompting
+# # # ### run bi-tempqa with few-shot prompting
 python3 tempeval-gpt.py \
     --model_name $model_name \
-    --output_path "gpt-output/fs-bi-output" \
+    --output_path "gpt-output/tempeval-qa-bi/few-shot-icl" \
     --temperature 0 \
     --top_p 1.0 \
     --max_events_length 1600 \
@@ -27,4 +27,14 @@ python3 tempeval-gpt.py \
     --bidirectional_temp_eval \
     --do_in_context_learning \
 
-python3 eval-tempeval-bi.py "gpt-output/fs-bi-output" $model_name
+# # # ### run bi-tempqa with ICL + COT
+python3 tempeval-gpt.py \
+    --model_name $model_name \
+    --output_path "gpt-output/tempeval-qa-bi/cot-output" \
+    --temperature 0 \
+    --top_p 1.0 \
+    --max_events_length 7000 \
+    --max_new_decoding_tokens 128 \
+    --bidirectional_temp_eval \
+    --do_in_context_learning \
+    --do_chain_of_thought \

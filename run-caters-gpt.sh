@@ -11,7 +11,7 @@ model_name="gpt-4"
 # # # ### run bi-tempqa with ICL
 python3 caters-gpt.py \
     --model_name $model_name \
-    --output_path "gpt-output/caters-fs-output" \
+    --output_path "gpt-output/caters/caters-fs-output" \
     --temperature 0 \
     --top_p 1.0 \
     --max_new_decoding_tokens 128 \

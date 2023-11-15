@@ -25,7 +25,7 @@ do
     python3 caters-llama.py \
         --model_name $model_name \
         --model_path $model_path \
-        --output_path "llama-output/caters-fs-pt${prompt}-output-icl${num_examples}-del" \
+        --output_path "llama-output/caters/caters-fs-pt${prompt}-output-icl${num_examples}-del" \
         --temperature 0.8 \
         --top_p 0.95 \
         --do_sample \

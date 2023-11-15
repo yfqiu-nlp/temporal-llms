@@ -71,7 +71,7 @@ else:
     model.eval()
     print(model.hf_device_map)
 
-    tokenizer = AutoTokenizer.from_pretrained("/bask/projects/j/jlxi8926-auto-sum/share/alpaca/7B", padding_side='left') # batch decoding
+    tokenizer = AutoTokenizer.from_pretrained(args.model_path, padding_side='left') # batch decoding
     print("Finish Loading!")
 
 

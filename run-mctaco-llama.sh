@@ -18,18 +18,15 @@ model_path="/PATH/TO/YOUR/LLAMA/MODEL"
 model_name="Llama-2-70b-chat-hf"
 
 prompt_style="qa"
-# prompt_style="mcq"
-
-prompt=1
 
 # # # ### run mctaco
 # ## Zero-shot experiment
 for prompt in 1 2 3
 do
-python3 mctaco-llama-no-leakage.py \
+python3 mctaco-llama.py \
     --model_name $model_name \
     --model_path $model_path \
-    --output_path "llama-output/mctaco-"$prompt_style"-zs-pt${prompt}-output" \
+    --output_path "llama-output/mctaco/mctaco-"$prompt_style"-zs-pt${prompt}-output" \
     --temperature 0 \
     --top_p 1.0 \
     --max_events_length 3600 \
@@ -43,10 +40,10 @@ done
 # ## Few-shot ICL experiment
 for prompt in 1 2 3
 do
-python3 mctaco-llama-no-leakage.py \
+python3 mctaco-llama.py \
     --model_name $model_name \
     --model_path $model_path \
-    --output_path "llama-output/mctaco-"$prompt_style"-fs-pt${prompt}-output" \
+    --output_path "llama-output/mctaco/mctaco-"$prompt_style"-fs-pt${prompt}-output" \
     --temperature 0 \
     --top_p 1.0 \
     --max_events_length 3600 \
