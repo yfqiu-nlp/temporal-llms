@@ -1,5 +1,5 @@
 # Temporal-LLMs
-Materials for paper "Are large language models temporally grounded?"
+Materials for paper "Are large language models temporally grounded?" ([pdf](https://arxiv.org/pdf/2311.08398.pdf))
 
 ![Screentshot](illustration.png)
 
